@@ -1,34 +1,10 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-/.pnp
+# 📦 Dependencies
+node_modules/
+.pnp
 .pnp.js
+jspm_packages/
 
-# lock files
-package-lock.json
-bun.lock
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-.vscode/
-
-FEATURES.md
+# 🔐 Environment Variables (CRITICAL: Do not commit these)
 .env
 .env.local
 .env.development.local
@@ -36,3 +12,52 @@ FEATURES.md
 .env.production.local
 *.env
 *.env.*
+
+# 🏗️ Build Outputs
+dist/
+build/
+out/
+.next/
+bin/
+obj/
+coverage/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# 📜 Logs and Runtime
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun.lock
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# 💻 IDE and System Files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# 🧪 Testing
+cypress/videos/
+cypress/screenshots/
+.nyc_output/
+
+# 📝 Documentation
+# Ignore all markdown files
+*.md
+# Allow only the main README.md (and READMEs in subdirectories)
+!README.md
+!**/README.md

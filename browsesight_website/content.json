@@ -1,0 +1,425 @@
+{
+  "meta": {
+    "projectName": "BrowseSight",
+    "version": "v2.1.2",
+    "description": "Real-time AI-powered security extension for modern web browsing",
+    "lastUpdated": "2026"
+  },
+  "routes": {
+    "/": {
+      "hero": {
+        "brand": {
+          "name": "BrowseSight",
+          "version": "v2.1.2"
+        },
+        "badge": {
+          "text": "Actually works",
+          "status": "active"
+        },
+        "title": {
+          "line1": "That sketchy link in your email?",
+          "line2": "Yeah, don't click it."
+        },
+        "subtitle": "Hover over links to see if they're trying to steal your stuff. Red = bad, green = fine. Built this because I got tired of my mom falling for phishing emails.",
+        "cta": {
+          "text": "Get the Extension",
+          "file": "/Browsesight.zip",
+          "helperText": "Free • Chrome only • Made by humans"
+        }
+      },
+      "sections": {
+        "problem": {
+          "label": "The Problem",
+          "title": "Why traditional browser security falls short",
+          "content": [
+            "Most browser protection relies on blocklists. They work only after a threat has already been reported.",
+            "Modern phishing attacks change domains, designs, and behavior constantly — which is why many scams slip through undetected."
+          ],
+          "icon": "https://img.icons8.com/fluency/48/error.png"
+        },
+        "solution": {
+          "label": "Our Solution",
+          "title": "A more reliable approach",
+          "content": [
+            "BrowseSight focuses on intent. It examines how a page behaves, what it asks for, and how it tries to influence the user.",
+            "This allows it to flag suspicious pages even when they are new, unreported, or carefully disguised."
+          ],
+          "icon": "https://img.icons8.com/fluency/48/security-shield-green.png"
+        },
+        "features": {
+          "label": "Protection Matrix",
+          "title": "What BrowseSight protects you from",
+          "items": [
+            {
+              "icon": "https://img.icons8.com/fluency/40/phishing.png",
+              "title": "Advanced phishing detection",
+              "description": "Detects credential harvesting pages, fake login forms, and sophisticated social engineering attacks using behavioral analysis."
+            },
+            {
+              "icon": "https://img.icons8.com/fluency/40/theatre-mask.png",
+              "title": "Brand impersonation alerts",
+              "description": "Identifies typosquatting, lookalike domains, and visual impersonation attempts targeting trusted brands and services."
+            },
+            {
+              "icon": "https://img.icons8.com/fluency/40/link.png",
+              "title": "URL unshortening",
+              "description": "Automatically reveals the true destination of shortened links from bit.ly, t.co, and other URL shorteners before you click."
+            },
+            {
+              "icon": "https://img.icons8.com/fluency/40/clock.png",
+              "title": "Pressure tactic detection",
+              "description": "Flags urgency manipulation like countdown timers, limited-time offers, and high-pressure sales tactics commonly used in scams."
+            },
+            {
+              "icon": "https://img.icons8.com/fluency/40/form.png",
+              "title": "Form security analysis",
+              "description": "Warns when sensitive data is requested on insecure pages and identifies the purpose of forms (login, payment, etc.)."
+            },
+            {
+              "icon": "https://img.icons8.com/fluency/40/artificial-intelligence.png",
+              "title": "AI threat intelligence",
+              "description": "Leverages multiple security APIs and AI analysis to provide human-readable explanations of detected threats."
+            }
+          ]
+        },
+        "howItWorks": {
+          "label": "System Architecture",
+          "title": "How BrowseSight works",
+          "steps": [
+            {
+              "number": "01",
+              "title": "Signal collection",
+              "description": "When a page loads or a link is hovered, BrowseSight collects visible signals such as the URL, page text, form elements, and redirect behavior."
+            },
+            {
+              "number": "02",
+              "title": "Local evaluation",
+              "description": "Trusted domains and cached results are checked first to avoid unnecessary processing."
+            },
+            {
+              "number": "03",
+              "title": "Risk analysis",
+              "description": "Unknown pages are evaluated across multiple risk factors including brand impersonation, urgency tactics, and unsafe data collection."
+            },
+            {
+              "number": "04",
+              "title": "Score calculation",
+              "description": "Each risk factor contributes to a final safety score that reflects the overall trust level of the page."
+            },
+            {
+              "number": "05",
+              "title": "User feedback",
+              "description": "A clear visual indicator and explanation are shown to help the user understand the assessment."
+            }
+          ]
+        },
+        "usage": {
+          "label": "Getting Started",
+          "title": "Using BrowseSight",
+          "steps": [
+            {
+              "number": "01",
+              "title": "Download the extension",
+              "description": "Download the official BrowseSight extension package from the provided source."
+            },
+            {
+              "number": "02",
+              "title": "Open Chrome Extensions",
+              "description": "Navigate to chrome://extensions in your Chrome browser."
+            },
+            {
+              "number": "03",
+              "title": "Enable Developer Mode",
+              "description": "Turn on Developer Mode using the toggle in the top-right corner of the page."
+            },
+            {
+              "number": "04",
+              "title": "Load BrowseSight",
+              "description": "Click 'Load unpacked' and select the extracted BrowseSight folder."
+            }
+          ],
+          "note": "BrowseSight does not require account creation, sign-in, or initial configuration."
+        }
+      },
+      "footer": {
+        "brand": {
+          "name": "BrowseSight",
+          "tagline": "Built with a security-first mindset.",
+          "logo": "/logo.png"
+        },
+        "contributors": {
+          "heading": "Contributors",
+          "list": [
+            {
+              "name": "Rishi Shah",
+              "github": "https://github.com/rishis26",
+              "username": "rishis26"
+            },
+            {
+              "name": "Ananya",
+              "github": "https://github.com/Ananya-020",
+              "username": "Ananya-020"
+            }
+          ]
+        },
+        "legal": {
+          "heading": "Legal",
+          "links": [
+            {
+              "text": "Terms & Conditions",
+              "route": "/terms"
+            }
+          ]
+        },
+        "bottom": {
+          "copyright": "© 2026 BrowseSight. All rights reserved.",
+          "status": {
+            "text": "All systems operational",
+            "indicator": "online"
+          }
+        }
+      }
+    },
+    "/terms": {
+      "navigation": {
+        "backLink": {
+          "text": "← Back to home",
+          "route": "/"
+        }
+      },
+      "header": {
+        "title": "Terms and Conditions",
+        "lastUpdated": "Last updated: 2026",
+        "statusIndicator": true
+      },
+      "sections": [
+        {
+          "heading": "Use of BrowseSight",
+          "content": "BrowseSight is provided as a security assistance tool. While it aims to reduce risk, it does not guarantee protection from all threats."
+        },
+        {
+          "heading": "Data handling",
+          "content": "BrowseSight processes website content strictly for security analysis. No personal browsing data is sold or used for advertising."
+        },
+        {
+          "heading": "Limitation of liability",
+          "content": "BrowseSight is provided on an as-is basis. Users remain responsible for their browsing decisions."
+        }
+      ]
+    }
+  },
+  "productTransparency": {
+    "installation": {
+      "sectionLabel": "Installation",
+      "sectionTitle": "How to install BrowseSight",
+      "context": "BrowseSight is currently distributed as an unpacked Chrome extension to maintain transparency during development.",
+      "steps": [
+        {
+          "order": 1,
+          "title": "Open Chrome Extensions",
+          "description": "Navigate to chrome://extensions in your Chrome browser."
+        },
+        {
+          "order": 2,
+          "title": "Enable Developer Mode",
+          "description": "Turn on Developer Mode using the toggle in the top-right corner of the Extensions page."
+        },
+        {
+          "order": 3,
+          "title": "Load the extension",
+          "description": "Click 'Load unpacked' and select the BrowseSight folder containing the extension files."
+        },
+        {
+          "order": 4,
+          "title": "Confirm installation",
+          "description": "BrowseSight will appear in the extensions list and activate immediately."
+        }
+      ],
+      "note": "No account creation, sign-in, or initial configuration is required."
+    },
+    "whatIsInstalled": {
+      "sectionLabel": "What You're Installing",
+      "sectionTitle": "Transparent by design",
+      "description": "BrowseSight uses standard Chrome extension components that are fully inspectable.",
+      "components": [
+        {
+          "name": "manifest.json",
+          "purpose": "Defines permissions, extension behavior, and Chrome compatibility."
+        },
+        {
+          "name": "content scripts",
+          "purpose": "Analyze visible webpage signals such as text, forms, and structure."
+        },
+        {
+          "name": "background service worker",
+          "purpose": "Handles security logic and communication with the backend API."
+        },
+        {
+          "name": "popup interface",
+          "purpose": "Displays safety results, explanations, and extension status."
+        }
+      ],
+      "statement": "No hidden binaries or executables are included. All files are readable and inspectable."
+    },
+    "permissions": {
+      "sectionLabel": "Permissions",
+      "sectionTitle": "Minimal access by default",
+      "chromeMessage": "No access needed. These extensions don't need to see and change information on this site.",
+      "explanation": [
+        "BrowseSight does not request blanket access to all websites.",
+        "It does not modify page content.",
+        "It does not read personal data."
+      ],
+      "principle": "Permissions are requested only when required for security analysis."
+    },
+    "usage": {
+      "sectionLabel": "Usage",
+      "sectionTitle": "How to use BrowseSight",
+      "intro": "BrowseSight is designed to work quietly in the background without interrupting normal browsing.",
+      "behavior": [
+        "Browse the web as usual.",
+        "Links and pages are analyzed automatically when hovered or visited.",
+        "You are notified only when something requires attention."
+      ],
+      "indicators": [
+        {
+          "state": "Safe",
+          "description": "No suspicious behavior detected. The page appears legitimate."
+        },
+        {
+          "state": "Caution",
+          "description": "Some risk signals detected. Proceed carefully."
+        },
+        {
+          "state": "Dangerous",
+          "description": "Strong indicators of phishing, impersonation, or malicious intent detected."
+        }
+      ],
+      "controlStatement": "BrowseSight provides information and context. The final decision always remains with the user."
+    },
+    "howItWorks": {
+      "sectionLabel": "How It Works",
+      "sectionTitle": "What happens behind the scenes",
+      "flow": [
+        {
+          "order": 1,
+          "title": "Signal observation",
+          "description": "When a page loads or a link is hovered, BrowseSight observes public signals such as the URL, visible text, forms, and redirect behavior."
+        },
+        {
+          "order": 2,
+          "title": "Local validation",
+          "description": "Known trusted domains and cached results are checked first to avoid unnecessary processing."
+        },
+        {
+          "order": 3,
+          "title": "Risk analysis",
+          "description": "Unknown pages are evaluated across multiple risk factors including impersonation, urgency tactics, and data collection behavior."
+        },
+        {
+          "order": 4,
+          "title": "Safety scoring",
+          "description": "Each factor contributes to a final safety score that reflects the overall risk level of the page."
+        },
+        {
+          "order": 5,
+          "title": "User feedback",
+          "description": "Clear visual indicators and explanations are shown so users understand the assessment."
+        }
+      ]
+    },
+    "api": {
+      "sectionLabel": "Backend & API",
+      "sectionTitle": "What the BrowseSight API does",
+      "purpose": "Some security checks require processing outside the browser for safety and performance reasons.",
+      "responsibilities": [
+        "Receives security-relevant page signals from the extension",
+        "Performs threat intelligence and reputation checks",
+        "Evaluates behavioral and contextual risk factors",
+        "Returns a structured safety score and explanation"
+      ],
+      "designPrinciples": [
+        "Minimal data exchange",
+        "No permanent storage of browsing history",
+        "Stateless analysis where possible"
+      ]
+    },
+    "dataPrivacy": {
+      "sectionLabel": "Privacy",
+      "sectionTitle": "How your data is handled",
+      "principles": [
+        "No selling of browsing data",
+        "No advertising or tracking",
+        "No user profiling"
+      ],
+      "details": [
+        "Only security-relevant page signals are analyzed.",
+        "Personally identifiable information is not collected.",
+        "Data is used strictly to assess risk."
+      ],
+      "statement": "BrowseSight is built with a privacy-first mindset. Security should never come at the cost of user trust."
+    }
+  },
+  "assets": {
+    "logo": "/logo.png",
+    "downloadFile": "/Browsesight.zip",
+    "screenshots": {
+      "extension": "/extention.png",
+      "apiHome": "/api-home-route.png",
+      "apiHealth": "/api-health-route.png",
+      "apiCheckUrl": "/api-check-url-route.png",
+      "steps": {
+        "chromeExtensionPage": "/steps/1. chrome-extention-page.png",
+        "selectingExtension": "/steps/2. selecting-extention-window.png",
+        "extensionInstalled": "/steps/3-a. chrome-extention-installed.png",
+        "extensionPopup": "/steps/3-b Installed-extention-popup.png"
+      }
+    },
+    "icons": {
+      "phishing": "https://img.icons8.com/fluency/40/phishing.png",
+      "mask": "https://img.icons8.com/fluency/40/theatre-mask.png",
+      "link": "https://img.icons8.com/fluency/40/link.png",
+      "clock": "https://img.icons8.com/fluency/40/clock.png",
+      "form": "https://img.icons8.com/fluency/40/form.png",
+      "ai": "https://img.icons8.com/fluency/40/artificial-intelligence.png",
+      "error": "https://img.icons8.com/fluency/48/error.png",
+      "shield": "https://img.icons8.com/fluency/48/security-shield-green.png"
+    }
+  },
+  "technical": {
+    "features": {
+      "6PillarAnalysis": [
+        "Reputation analysis",
+        "Brand authenticity check",
+        "Domain maturity assessment",
+        "Destination security validation",
+        "Pressure tactic detection",
+        "Data risk evaluation"
+      ],
+      "aiIntegration": {
+        "model": "Llama 3.3",
+        "capabilities": [
+          "Behavioral analysis",
+          "Intent detection",
+          "Human-readable explanations",
+          "Real-time threat assessment"
+        ]
+      },
+      "urlShorteners": [
+        "bit.ly",
+        "t.co",
+        "tinyurl.com",
+        "is.gd",
+        "buff.ly",
+        "ow.ly",
+        "goo.gl"
+      ],
+      "browserSupport": ["Chrome", "Edge", "Brave", "Opera"]
+    },
+    "installation": {
+      "method": "Unpacked extension",
+      "requirements": "Chrome Developer Mode",
+      "fileFormat": "ZIP archive"
+    }
+  }
+}

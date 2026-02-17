@@ -1,0 +1,28 @@
+{
+  "name": "browsesight-server",
+  "version": "2.1.2",
+  "description": "BrowseSight API Server - Multi-source threat intelligence aggregation",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "security",
+    "phishing-detection",
+    "threat-intelligence",
+    "api"
+  ],
+  "author": "BrowseSight Team",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

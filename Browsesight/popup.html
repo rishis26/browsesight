@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrowseSight Dashboard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header>
+        <div class="logo-area">
+          <img src="icons/logo.png" alt="Logo" class="logo" />
+          <div class="brand">
+            <h1>BrowseSight</h1>
+            <span class="version">v2.1.2</span>
+          </div>
+        </div>
+        <div class="status-badge" id="protection-status">
+          <span class="pulse"></span> Active
+        </div>
+      </header>
+
+      <main>
+        <div class="toggle-item master-toggle" style="margin-bottom: 16px">
+          <div class="toggle-info">
+            <span
+              class="toggle-label"
+              style="color: var(--cyber-cyan); font-weight: 700"
+              >BrowseSight Shield</span
+            >
+            <p class="toggle-desc">Turn off entire extension</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-master" checked />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value" id="stats-scanned">0</div>
+            <div class="stat-label">Links Scanned</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stats-threats">0</div>
+            <div class="stat-label">Threats Blocked</div>
+          </div>
+        </div>
+
+        <div class="scanning-info">
+          <h3>Current Site Trust Intelligence</h3>
+          <div class="site-card" id="current-site-info">
+            <div class="domain-name" id="display-domain">Waiting...</div>
+            <div class="trust-indicator" id="trust-level">--</div>
+          </div>
+        </div>
+
+        <div class="protection-toggles">
+          <div class="protection-toggles">
+            <h3>Security Layers</h3>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">Urgency Detection</span>
+                <p class="toggle-desc">Highlights fake 'limit' tags</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggle-urgency" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">Form Guardian</span>
+                <p class="toggle-desc">Flags insecure data forms</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggle-forms" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="re-scan">Force Re-scan</button>
+        </div>
+      </main>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

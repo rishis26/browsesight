@@ -1,0 +1,618 @@
+/* BrowseSight - Clean Styles */
+
+/* Luxury Floating Glass Overlay */
+.bs-link {
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+/* The Dynamic Glass Layer */
+.bs-link::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: -4px -6px !important; /* balanced spacing */
+  border-radius: 8px !important;
+  pointer-events: none !important;
+  z-index: 999999 !important;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  background: transparent !important;
+  opacity: 0 !important;
+  mix-blend-mode: overlay !important;
+  backdrop-filter: saturate(1.8) blur(0px) !important;
+}
+
+/* Elite Security Glows - Maximum Visual Impact */
+.bs-link[data-bs="safe"]:hover::after {
+  opacity: 1 !important;
+  background: rgba(0, 255, 136, 0.15) !important;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(0, 255, 136, 0.8),
+    /* Sharper border */ 0 0 15px rgba(0, 255, 136, 0.4) !important;
+}
+
+.bs-link[data-bs="warning"]:hover::after {
+  opacity: 1 !important;
+  background: rgba(255, 220, 0, 0.2) !important; /* Richer yellow */
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 220, 0, 0.9),
+    /* Thicker border */ 0 0 20px rgba(255, 220, 0, 0.5) !important; /* Bright glow */
+}
+
+.bs-link[data-bs="danger"]:hover::after {
+  opacity: 1 !important;
+  background: rgba(255, 0, 40, 0.2) !important; /* Slightly lighter fill */
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 0, 40, 0.8),
+    /* Sharp primary border */ 0 0 25px rgba(255, 0, 40, 0.5) !important; /* Strong but controlled aura */
+}
+
+/* Dynamic Scanning State */
+.bs-link[data-bs="checking"]:hover::after {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.2) !important;
+  animation: bs-pulse 1.8s infinite ease-in-out !important;
+}
+
+@keyframes bs-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* Error State - Subtle Grey Pulse (Visible on Hover) */
+.bs-link[data-bs="error"]:hover::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: -4px -6px !important;
+  border-radius: 8px !important;
+  background: rgba(150, 150, 150, 0.1) !important;
+  box-shadow: inset 0 0 0 1px rgba(150, 150, 150, 0.3) !important;
+  border: 1px dashed rgba(150, 150, 150, 0.5) !important;
+  pointer-events: none !important;
+  z-index: 999999 !important;
+  opacity: 1 !important; /* Make sure it's visible! */
+}
+
+/* =========================================
+   🚀 NEW: Urgency Phrase Highlighter
+   ========================================= */
+.bs-urgency {
+  background-color: rgba(255, 165, 0, 0.2) !important;
+  border-bottom: 2px dotted orange !important;
+  color: inherit !important;
+  cursor: help !important;
+  border-radius: 4px !important;
+  padding: 0 2px !important;
+}
+
+.bs-urgency:hover {
+  background-color: rgba(255, 165, 0, 0.4) !important;
+}
+
+/* =========================================
+   🛡️ NEW: Form Purpose Badge
+   ========================================= */
+.bs-form-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 4px 10px !important;
+  margin-bottom: 8px !important;
+  border-radius: 12px !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  z-index: 9999 !important;
+  transition: all 0.2s ease !important;
+}
+
+.bs-risk-low {
+  background: rgba(0, 255, 136, 0.15) !important;
+  color: #00bf63 !important;
+  border: 1px solid rgba(0, 255, 136, 0.3) !important;
+}
+
+.bs-risk-medium {
+  background: rgba(255, 200, 0, 0.15) !important;
+  color: #ffaa00 !important;
+  border: 1px solid rgba(255, 200, 0, 0.3) !important;
+}
+
+/* =========================================
+   🛑 NEW: Danger Intervention Modal
+   ========================================= */
+.bs-danger-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(10, 10, 15, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  z-index: 2147483647 !important; /* Max Z-Index */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.bs-modal-card {
+  width: 420px !important;
+  background: rgba(20, 20, 25, 0.95) !important;
+  border: 1px solid rgba(255, 50, 50, 0.3) !important;
+  border-top: 4px solid #ff3232 !important;
+  border-radius: 16px !important;
+  padding: 30px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+  text-align: center !important;
+  color: #fff !important;
+}
+
+.bs-modal-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: 20px !important;
+}
+
+.bs-modal-logo {
+  width: 64px !important;
+  height: 64px !important;
+  margin-bottom: 12px !important;
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.5)) !important;
+}
+
+.bs-modal-header h3 {
+  font-size: 14px !important;
+  color: #0096ff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.bs-modal-header h2 {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  margin: 0 0 20px 0 !important;
+  color: #ff3232 !important;
+}
+
+.bs-modal-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.bs-warning-text {
+  font-size: 16px !important;
+  color: #ccc !important;
+  margin: 0 !important;
+}
+
+/* Safety Score in Modal */
+.bs-safety-score-modal {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 50, 50, 0.2) !important;
+  position: relative !important;
+}
+
+.bs-safety-score-modal .bs-siren-small {
+  width: 28px !important;
+  height: 28px !important;
+  margin-bottom: 4px !important;
+  filter: drop-shadow(0 0 8px rgba(255, 50, 50, 0.6)) !important;
+}
+
+.bs-safety-score-modal .bs-score-label {
+  font-size: 11px !important;
+  color: #999 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+
+.bs-safety-score-modal .bs-score-bar-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.bs-safety-score-modal .bs-score-bar {
+  height: 100% !important;
+  border-radius: 10px !important;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 0 15px currentColor !important;
+}
+
+.bs-safety-score-modal .bs-score-value {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #ff3232 !important;
+  text-align: center !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.bs-threat-box {
+  background: rgba(255, 50, 50, 0.08) !important;
+  border: 1px solid rgba(255, 50, 50, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  text-align: left !important;
+  margin-bottom: 24px !important;
+  max-height: 120px !important; /* Prevent huge modals */
+  overflow-y: auto !important; /* Scroll if text is long */
+}
+
+.bs-threat-box h4 {
+  margin: 0 0 8px 0 !important;
+  font-size: 11px !important;
+  color: #ff5555 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 700 !important;
+}
+
+.bs-threat-box ul {
+  margin: 0 !important;
+  padding-left: 18px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important; /* Better readability */
+  color: #eee !important;
+}
+
+.bs-threat-box li {
+  margin-bottom: 6px !important;
+}
+
+.bs-small-text {
+  font-size: 12px !important;
+  color: #888 !important;
+  margin-bottom: 24px !important;
+  opacity: 0.8 !important;
+}
+
+.bs-modal-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.bs-btn-primary {
+  background: transparent !important;
+  border: 1px solid #444 !important; /* Subtle border initially */
+  color: #888 !important;
+  padding: 14px !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.bs-btn-primary:not(.disabled):hover {
+  border-color: #ff3232 !important;
+  color: #ff3232 !important;
+  background: rgba(255, 50, 50, 0.1) !important;
+}
+
+.bs-btn-secondary {
+  background: #fff !important;
+  color: #000 !important;
+  border: none !important;
+  padding: 14px !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ========================================= */
+/* ⚠️ Enhanced Warning Toast with Score Bar */
+/* ========================================= */
+
+.bs-warning-toast {
+  position: fixed !important;
+  bottom: 20px !important;
+  top: auto !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  background: rgba(15, 15, 20, 0.98) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 1px rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(120%) !important;
+  opacity: 0 !important;
+  min-width: 380px !important;
+  max-width: 420px !important;
+  color: white !important;
+  overflow: hidden !important;
+}
+
+.bs-warning-toast.bs-show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+.bs-toast-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  padding: 20px !important;
+}
+
+.bs-toast-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.bs-toast-icon {
+  width: 32px !important;
+  height: 32px !important;
+  filter: drop-shadow(0 0 8px rgba(0, 150, 255, 0.6)) !important;
+  flex-shrink: 0 !important;
+}
+
+.bs-toast-title {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  flex: 1 !important;
+}
+
+.bs-toast-title strong {
+  font-size: 14px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.bs-risk-badge {
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  background: rgba(255, 215, 0, 0.2) !important;
+  color: #ffd700 !important;
+  border: 1px solid #ffd700 !important;
+  width: fit-content !important;
+}
+
+.bs-toast-close {
+  background: transparent !important;
+  border: none !important;
+  color: #666 !important;
+  font-size: 24px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  transition: color 0.2s !important;
+  flex-shrink: 0 !important;
+}
+
+.bs-toast-close:hover {
+  color: #fff !important;
+}
+
+/* Safety Score Bar */
+.bs-safety-score {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  position: relative !important;
+}
+
+.bs-siren-small {
+  width: 24px !important;
+  height: 24px !important;
+  margin-bottom: 4px !important;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5)) !important;
+}
+
+.bs-score-label {
+  font-size: 11px !important;
+  color: #999 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+
+.bs-score-bar-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 8px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.bs-score-bar {
+  height: 100% !important;
+  border-radius: 10px !important;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 0 10px currentColor !important;
+}
+
+.bs-score-value {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-align: center !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* Checks Status */
+.bs-checks-status {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.bs-check-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 6px !important;
+  border-left: 3px solid !important;
+}
+
+.bs-check-item.safe {
+  border-left-color: #00ff88 !important;
+  color: #00ff88 !important;
+}
+
+.bs-check-item.threat {
+  border-left-color: #ff3232 !important;
+  color: #ff3232 !important;
+}
+
+.bs-check-icon {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+.bs-check-item span:last-child {
+  color: #ccc !important;
+}
+
+/* 6-Pillar Security Breakdown */
+.bs-pillar-breakdown {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  margin-top: 10px !important;
+}
+
+.bs-pillar-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 13px !important;
+  color: #ccc !important;
+}
+
+.bs-pillar-label {
+  width: 100px !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+}
+
+.bs-pillar-bar-bg {
+  flex: 1 !important;
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.bs-pillar-bar-fill {
+  height: 100% !important;
+  border-radius: 10px !important;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bs-pillar-val {
+  width: 40px !important;
+  text-align: right !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #fff !important;
+}
+
+/* Mini version for Toast */
+.bs-pillar-summary {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  padding: 10px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 8px !important;
+}
+
+.bs-pillar-item.mini {
+  flex: 1 1 40% !important;
+  font-size: 10px !important;
+  gap: 6px !important;
+}
+
+.bs-pillar-item.mini span {
+  width: auto !important;
+  min-width: 45px !important;
+}
+
+.bs-pillar-item.mini .bs-pillar-bar-bg {
+  height: 3px !important;
+}
+
+/* Warnings Section */
+.bs-warnings {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  padding: 12px !important;
+  background: rgba(255, 50, 50, 0.08) !important;
+  border: 1px solid rgba(255, 50, 50, 0.2) !important;
+  border-radius: 8px !important;
+}
+
+.bs-warning-title {
+  font-size: 11px !important;
+  color: #ff5555 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 4px !important;
+}
+
+.bs-warning-item {
+  font-size: 12px !important;
+  color: #eee !important;
+  line-height: 1.5 !important;
+  padding-left: 4px !important;
+  text-align: center !important;
+}

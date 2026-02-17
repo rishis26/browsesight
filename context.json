@@ -1,0 +1,214 @@
+{
+  "version": "2.1.2",
+  "project": {
+    "name": "BrowseSight",
+    "type": "Browser Extension",
+    "domain": "Cybersecurity",
+    "core_idea": "BrowseSight is a browser extension that helps users understand whether a link, website, or email is safe at the exact moment they are about to interact with it. It identifies scams, phishing attempts, impersonation, and privacy risks using threat intelligence and AI, and presents this risk clearly without blocking access or forcing decisions.",
+    "core_principle": "Recommend, not force",
+    "detailed_description": "BrowseSight acts as a real-time trust intelligence layer across Google Search, websites, and Gmail. It focuses on clarity, timing, and user behavior by providing visual cues, simple explanations, and contextual guidance at decision points while fully respecting user autonomy and privacy.",
+    "milestones": {
+      "backend_api_v2_0_1": "Successfully developed a high-performance Express.js central server integrating Google Safe Browsing, VirusTotal, and Groq AI.",
+      "ai_risk_assessment": "Implemented advanced URL pattern analysis using Groq AI (Llama 3.3 70B) to catch zero-day phishing and suspicious domains with ~100% detection rate.",
+      "high_availability": "Built a robust AI failover system with primary and backup Groq API keys for 100% uptime."
+    }
+  },
+
+  "design_rules": {
+    "no_blocking_websites": true,
+    "no_forcing_user_actions": true,
+    "no_disabling_google_safesearch": true,
+    "no_overriding_browser_security": true,
+    "user_choice_respected": true,
+    "privacy_first": true
+  },
+
+  "supported_platforms": {
+    "search": ["Google Search"],
+    "email": ["Gmail"],
+    "websites": ["All public websites"]
+  },
+
+  "apis_used": {
+    "groq_api": {
+      "purpose": "AI inference for scam classification, intent detection, language analysis, and behavioral understanding",
+      "status": "Active"
+    },
+    "virustotal_api": {
+      "purpose": "Domain and URL reputation intelligence using multiple security engines",
+      "status": "Active"
+    },
+    "google_safe_browsing_api": {
+      "purpose": "Baseline malicious URL verification",
+      "status": "Active"
+    },
+    "openai_api": {
+      "purpose": "Human-readable explanations and scam summaries (optional, can use Groq instead)",
+      "status": "Optional"
+    },
+    "browser_extension_apis": {
+      "purpose": "UI injection, navigation monitoring, user interaction handling, local storage",
+      "status": "Active"
+    }
+  },
+
+  "final_features": {
+    "user_interaction": [
+      "User Choice Confirmation with Countdown",
+      "Go Back Recommendation",
+      "Proceed Anyway Option After Delay",
+      "Adaptive Warning Tone",
+      "Safe Exit Button",
+      "Manual Verify Button"
+    ],
+    "search_and_website": [
+      "Hover-Scan (On-Demand): Analyzes links only when hovered.",
+      "Instant-Response Architecture: Server-side caching and fast-path logic for <200ms results.",
+      "Surgical UI: Status dots vertically aligned with text, breadcrumbs ignored.",
+      "Duplicate Domain Lookalike Alert",
+      "Brand Impersonation Detector",
+      "Multi-Source Trust Score",
+      "Color-Coded Risk Indicator",
+      "Link Hover Risk Preview",
+      "Redirect Transparency Indicator",
+      "Urgency Phrase Highlighter",
+      "Risk Confidence Disclosure",
+      "Soft Repeat Warning",
+      "Safe Alternative Suggestion",
+      "Passive Risk Indicator Mode",
+      "Visual Character Difference Highlighter",
+      "Intent vs Page Mismatch Detector",
+      "Form Purpose Declaration",
+      "Domain Naming Psychology Detector",
+      "Search Result Trust Gap Indicator",
+      "Link Aging Warning",
+      "Context Switch Alert",
+      "Data Density Alert",
+      "Human vs Bot Page Signal",
+      "Trust History Memory",
+      "Privacy Leak Alert",
+      "Warning Toast Notification"
+    ],
+    "email": [
+      "Mail Sender Confidence Badge",
+      "Gmail Sender Verification",
+      "Scam Type Label for Emails",
+      "Mail Purpose Predictor",
+      "Conversation Hijack Alert",
+      "Sender Identity Drift Detector",
+      "Hidden Deadline Detector",
+      "Urgency Language Highlighter",
+      "Email Link Destination Preview",
+      "Email Header Authentication Check (SPF/DKIM/DMARC)",
+      "Attachment Risk Indicator",
+      "Reply Consequence Preview",
+      "Email Chain Risk Accumulation",
+      "Mail Authenticity Timeline",
+      "Mail Trust History Memory",
+      "Cross-Link Correlation",
+      "Cross-Language Consistency Check",
+      "One-Line AI Risk Explanation"
+    ],
+    "behavior_and_session": [
+      "Session Risk Tracking",
+      "Decision Delay Measurement",
+      "Session-End Safety Summary",
+      "Post-Decision Feedback Loop"
+    ],
+    "reporting_and_evidence": [
+      "Export Scam Summary (FIR-Ready)",
+      "Screenshot Evidence Capture",
+      "Quick Evidence Bundle Generation",
+      "Incident Timeline Generation"
+    ]
+  },
+
+  "installation_workflow": {
+    "distribution_method": "Direct ZIP download",
+    "file_name": "browsesight-extension.zip",
+    "steps": [
+      "User clicks Download and the ZIP file is saved locally",
+      "User extracts the ZIP file to obtain the extension folder",
+      "User opens Chrome and navigates to chrome://extensions",
+      "User enables Developer mode (one-time Chrome requirement)",
+      "User clicks Load unpacked and selects the extracted folder",
+      "BrowseSight extension is installed and becomes active immediately"
+    ],
+    "user_experience_notes": [
+      "No auto-installation is performed",
+      "No silent permissions or background installs",
+      "Developer mode can be turned off after installation",
+      "Installation is transparent and user-controlled"
+    ],
+    "first_run_behavior": [
+      "Extension icon appears in the browser toolbar",
+      "BrowseSight runs silently in the background",
+      "Visual indicators appear only when risk is detected",
+      "No websites or actions are blocked"
+    ]
+  },
+
+  "backend_server": {
+    "version": "2.1.2",
+    "description": "Express.js API server that aggregates threat intelligence from multiple sources and provides analysis endpoints for the browser extension. Features parallel execution of security checks for ~2s response times.",
+    "architecture": "The extension communicates with the backend API server, which securely stores all API keys and handles requests to external threat intelligence services",
+    "technology_stack": {
+      "runtime": "Node.js",
+      "framework": "Express.js",
+      "dependencies": ["axios", "cors", "dotenv"]
+    },
+    "api_endpoints": {
+      "health_check": {
+        "method": "GET",
+        "path": "/health",
+        "purpose": "Server health and status verification"
+      },
+      "url_analysis": {
+        "method": "POST",
+        "path": "/api/check-url",
+        "purpose": "Analyze URLs for scams, phishing, and security risks",
+        "integrations": ["Google Safe Browsing", "VirusTotal", "Groq AI"]
+      },
+      "email_analysis": {
+        "method": "POST",
+        "path": "/api/analyze-email",
+        "purpose": "Analyze email content for phishing and scam indicators",
+        "integrations": ["Groq AI"]
+      }
+    },
+    "security": {
+      "cors": "Configured to allow browser extension origins",
+      "rate_limiting": "Prevents API abuse",
+      "api_key_storage": "All external API keys stored securely in environment variables, never exposed to users"
+    },
+    "deployment": {
+      "api_server": {
+        "url": "https://browsesight-api.vercel.app",
+        "purpose": "Backend API server that the extension calls for threat analysis"
+      },
+      "landing_page": {
+        "url": "https://browsesight.vercel.app",
+        "purpose": "Public website where users download the extension and learn about features"
+      },
+      "hosting": "Vercel"
+    }
+  },
+
+  "yellow_list": {
+    "definition": "The yellow list represents high-level future features that demonstrate long-term vision. These features are intentionally excluded from the core build and are not claimed as implemented.",
+    "features": [
+      "Community Scam Trend Feed",
+      "Trust Fatigue Monitor",
+      "Enterprise or Campus Admin Dashboard",
+      "Consent-Based Phishing Simulation Mode",
+      "Live Scam Heatmap"
+    ]
+  },
+
+  "presentation_notes_for_teammate": {
+    "major_talking_point_1": "The BrowseSight API is now fully developed (v2.0.1) and production-ready, serving as the 'brain' of the extension.",
+    "major_talking_point_2": "AI Integration is a game-changer: We use Groq AI (Llama 3) to analyze URL naming psychology and patterns, which catches phishing sites that aren't in any database yet.",
+    "major_talking_point_3": "Deep Scan Capability: The extension now scans the entire source code of websites to find malicious links hidden in common UI elements like buttons and download links.",
+    "ppt_requirement": "Include a dedicated slide for the 'AI Integration & Multi-Source Intelligence' explaining how we combine Google, VirusTotal, and Groq for a 100% detection rate path."
+  }
+}

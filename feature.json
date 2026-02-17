@@ -1,0 +1,44 @@
+{
+  "browseSight_features": [
+    {
+      "title": "Hover-to-Scan",
+      "benefit": "Instantly scans any link before you click it, keeping you safe from hidden threats."
+    },
+    {
+      "title": "AI Security Analysis",
+      "benefit": "Uses advanced AI to explain why a site is dangerous in plain English, not technical jargon."
+    },
+    {
+      "title": "Dangerous Site Blocker",
+      "benefit": "Automatically intercepts malicious links and stops you from visiting sites that steal data."
+    },
+    {
+      "title": "Scam & Urgency Detection",
+      "benefit": "Highlights high-pressure selling tactics and fake 'limited time' offers that try to rush you into a mistake."
+    },
+    {
+      "title": "Secure Form Guard",
+      "benefit": "Identifies if a login or payment form is insecure before you enter your private information."
+    },
+    {
+      "title": "Lookalike Domain Protection",
+      "benefit": "Detects fake websites trying to impersonate brands like Google or Amazon."
+    },
+    {
+      "title": "Intelligent Warnings",
+      "benefit": "Provides helpful security alerts for suspicious sites without getting in the way of your browsing."
+    },
+    {
+      "title": "URL Unshortening",
+      "benefit": "Exposes the real destination of hidden links (like bit.ly) to detect threats before you're redirected."
+    },
+    {
+      "title": "Custom Security Toggles",
+      "benefit": "Choose which security layers you want active (like Scam Detection or Form Guardian) directly from the popup."
+    },
+    {
+      "title": "Instant Privacy Protection",
+      "benefit": "Ensures your scanning data is handled privately and provides instant verification for trusted sites like GitHub."
+    }
+  ]
+}

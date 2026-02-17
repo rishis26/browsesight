@@ -31,12 +31,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-bun.lock
 *.log
 logs/
 *.pid
 *.seed
 *.pid.lock
+
+# 🔒 Lock Files (Ignored per request)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
 
 # 💻 IDE and System Files
 .vscode/
@@ -56,8 +61,7 @@ cypress/screenshots/
 .nyc_output/
 
 # 📝 Documentation
-# Ignore all markdown files
-*.md
-# Allow only the main README.md (and READMEs in subdirectories)
-!README.md
-!**/README.md
+# Ignore all markdown files everywhere
+**/*.md
+# Allow ONLY the root README.md
+!/README.md

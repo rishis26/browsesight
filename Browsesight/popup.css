@@ -280,4 +280,49 @@ input:checked + .slider:before {
 
 /* End of main styles */
 
-/* End of styles */
+.bs-pillar-breakdown {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  margin-top: 10px !important;
+}
+
+.bs-pillar-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 11px !important;
+  color: #ccc !important;
+}
+
+.bs-pillar-label {
+  width: 80px !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+}
+
+.bs-pillar-bar-bg {
+  flex: 1 !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.bs-pillar-bar-fill {
+  height: 100% !important;
+  border-radius: 10px !important;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bs-pillar-val {
+  width: 30px !important;
+  text-align: right !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #fff !important;
+}

@@ -151,14 +151,19 @@
 
 .bs-modal-card {
   width: 420px !important;
+  max-width: 90vw !important;
+  max-height: 85vh !important;
   background: rgba(20, 20, 25, 0.95) !important;
   border: 1px solid rgba(255, 50, 50, 0.3) !important;
   border-top: 4px solid #ff3232 !important;
   border-radius: 16px !important;
-  padding: 30px !important;
+  padding: 24px !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  flex-direction: column !important;
   text-align: center !important;
   color: #fff !important;
+  overflow: hidden !important;
 }
 
 .bs-modal-header {
@@ -194,6 +199,25 @@
   display: flex !important;
   flex-direction: column !important;
   gap: 20px !important;
+  overflow-y: auto !important;
+  padding: 10px 4px !important;
+  margin: 0 -4px !important;
+  flex: 1 !important;
+}
+
+/* Custom Scrollbar for Modal Body */
+.bs-modal-body::-webkit-scrollbar {
+  width: 6px !important;
+}
+.bs-modal-body::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.bs-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+}
+.bs-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .bs-warning-text {
@@ -297,6 +321,8 @@
   display: flex !important;
   flex-direction: column !important;
   gap: 10px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .bs-btn-primary {

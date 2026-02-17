@@ -293,6 +293,7 @@ const URGENCY_PATTERNS = [
   /limited time deal/i,
   /flash sale ends/i,
   /buy now or lose/i,
+  /buy now or lose/i,
 ];
 
 function scanPageForUrgency() {
@@ -484,43 +485,52 @@ function showDangerModal(url, response) {
   // 6 Pillar Score details breakdown
   const safetyScore = response?.overall?.safetyScore || 0;
 
-  // Force score bar to RED in the Danger Intervention Modal to match "High Risk" status
-  const scoreColor = "#FF3232";
-
   const modal = document.createElement("div");
   modal.className = "bs-danger-modal";
   modal.innerHTML = `
-    <div class="bs-modal-card">
-      <div class="bs-modal-header">
-        <img src="${chrome.runtime.getURL("icons/logo.png")}" class="bs-modal-logo" alt="BrowseSight" />
-        <h3>Security Analysis</h3>
-        <h2 style="color: ${scoreColor}">⚠️ ${safetyScore < 85 ? "High Risk Link" : "Caution Advised"}</h2>
-      </div>
-      
-      <div class="bs-modal-body">
-        <div class="bs-safety-score-modal">
-          <img src="${sirenUrl}" class="bs-siren-small" />
-          <div class="bs-score-label">Overall Safety Score</div>
-          <div class="bs-score-bar-container">
-            <div class="bs-score-bar" style="width: ${safetyScore}%; background: ${scoreColor};"></div>
-          </div>
-          <div class="bs-score-value" style="color: ${scoreColor}">${safetyScore}%</div>
+    <div class="bs-modal-card" style="border: 2px solid #ff3232; box-shadow: 0 0 32px rgba(255, 50, 50, 0.4); background: #121214; padding: 0; width: 440px; overflow: hidden; display: flex; flex-direction: column; border-radius: 14px;">
+      <div class="bs-modal-body" style="padding: 24px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- Header with Logo & Name -->
+        <div style="text-align: center; margin-bottom: 5px; padding-top: 5px;">
+          <img src="${chrome.runtime.getURL("icons/logo.png")}" style="width: 44px; height: 44px; margin-bottom: 6px;" alt="BrowseSight" />
+          <h3 style="margin: 0; color: #fff; font-size: 14px; letter-spacing: 2px; font-weight: 800; text-transform: uppercase; font-family: 'Outfit', sans-serif;">BrowseSight</h3>
         </div>
 
-        
-        <div class="bs-threat-box">
-          <h4>🚨 Risk Assessment:</h4>
-          <ul>
-             ${threatsList}
+        <!-- Score Section -->
+        <div style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+          <img src="${sirenUrl}" style="width: 36px; height: 36px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(255, 50, 50, 0.7));" />
+          <div style="color: #999; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 18px;">Overall Safety Score</div>
+          <div style="position: relative; width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 18px;">
+            <div style="width: ${safetyScore}%; height: 100%; background: #ff3232; box-shadow: 0 0 12px rgba(255, 50, 50, 0.6); transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+          </div>
+          <div style="color: #ff3232; font-size: 42px; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1;">${safetyScore}%</div>
+          <div style="margin-top: 8px; color: #ff5555; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+            <span style="opacity: 0.6;">Threat Level:</span> ${(100 - safetyScore).toFixed(0)}%
+          </div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div style="background: rgba(30, 10, 10, 0.4); padding: 18px; border-radius: 12px; border: 1px solid rgba(255, 50, 50, 0.15);">
+          <div style="color: #ff5555; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 14px;">🚨</span> RISK ASSESSMENT:
+          </div>
+          <ul style="margin: 0; padding-left: 20px; color: #eee; font-size: 13px; line-height: 1.6; text-align: left;">
+            ${threatsList}
           </ul>
         </div>
 
-        <p class="bs-small-text">⚠️ Visiting this site may steal your data or infect your device.</p>
+        <!-- Pillars & Formula -->
+        ${getPillarBreakdownHTML(response?.overall?.pillars)}
+
+        <div style="color: #ffcc00; font-size: 11px; display: flex; align-items: center; gap: 8px; justify-content: center; opacity: 0.8; margin-top: 10px; text-align: center;">
+          <span>⚠️</span> Visiting this site may steal your data or infect your device.
+        </div>
       </div>
 
-      <div class="bs-modal-actions">
-        <button class="bs-btn-secondary" id="bs-cancel-btn">Go Back to Safety</button>
-        <button class="bs-btn-primary disabled" id="bs-proceed-btn" disabled>
+      <div class="bs-modal-actions" style="padding: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 12px; background: #121214;">
+        <button class="bs-btn-secondary" id="bs-cancel-btn" style="background: #fff; color: #000; border: none; padding: 16px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);">Go Back to Safety</button>
+        <button class="bs-btn-primary disabled" id="bs-proceed-btn" disabled style="background: rgba(255,255,255,0.04); color: #777; border: 1px solid #333; padding: 14px; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 13px;">
           I understand the risk (4)
         </button>
       </div>
@@ -605,6 +615,8 @@ function showWarningToast(response) {
         `
             : ""
         }
+
+        ${getPillarBreakdownHTML(pillars, true)}
     </div>
   `;
 
@@ -627,4 +639,100 @@ function showWarningToast(response) {
     clearTimeout(timeout);
     removeToast();
   });
+}
+
+function getPillarBreakdownHTML(pillars, isMini = false) {
+  if (!pillars) return "";
+
+  const pillarDots = [
+    {
+      label: "Reputation",
+      val: pillars.reputation || 0,
+      color: "#3B74DE",
+      w: 0.25,
+    },
+    { label: "Brand", val: pillars.brand || 0, color: "#00FF88", w: 0.2 },
+    {
+      label: "Maturity",
+      val: pillars.maturity || 0,
+      color: "#ff3232",
+      w: 0.15,
+    },
+    {
+      label: "Destination",
+      val: pillars.destination || 0,
+      color: "#00FF88",
+      w: 0.15,
+    },
+    { label: "Pressure", val: pillars.pressure || 0, color: "#ff3232", w: 0.1 },
+    {
+      label: "DataRisk",
+      val: pillars.dataRisk || 0,
+      color: "#ff3232",
+      w: 0.15,
+    },
+  ];
+
+  if (isMini) {
+    return `
+      <div class="bs-pillar-summary">
+        ${pillarDots
+          .map(
+            (p) => `
+          <div class="bs-pillar-item mini">
+            <span class="bs-pillar-label">${p.label}</span>
+            <div class="bs-pillar-bar-bg">
+              <div class="bs-pillar-bar-fill" style="width: ${p.val}%; background: ${p.color}"></div>
+            </div>
+          </div>
+        `,
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  const formulaRows = pillarDots
+    .map((p) => {
+      const contribution = (p.val * p.w).toFixed(1);
+      return `
+      <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; align-items: center;">
+        <span style="color: #ccc; font-weight: 500;">${p.label}:</span>
+        <span style="color: #eee; font-weight: 600;">${p.val}% × ${p.w} = ${contribution}%</span>
+      </div>
+    `;
+    })
+    .join("");
+
+  const total = pillarDots.reduce((sum, p) => sum + p.val * p.w, 0).toFixed(0);
+
+  return `
+    <!-- Security Pillars -->
+    <div class="bs-pillar-card" style="background: rgba(255,255,255,0.025); padding: 22px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px;">
+      <h4 style="margin: 0 0 20px 0; font-size: 11px; color: #ff5555; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800;">Security Pillars</h4>
+      ${pillarDots
+        .map(
+          (p) => `
+        <div class="bs-pillar-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 13px;">
+          <span style="width: 100px; color: #eee; font-weight: 600;">${p.label}</span>
+          <div style="flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 10px; margin: 0 20px; position: relative; overflow: hidden;">
+            <div style="width: ${p.val}%; height: 100%; background: ${p.val < 50 ? "#ff3232" : "#00FF88"}; border-radius: 10px; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+          </div>
+          <span style="width: 40px; text-align: right; color: #fff; font-weight: 800; font-family: 'JetBrains Mono', monospace;">${p.val}%</span>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+
+    <!-- Mathematical Formula -->
+    <div class="bs-formula-card" style="background: rgba(255,255,255,0.025); padding: 22px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+      <h4 style="margin: 0 0 20px 0; font-size: 11px; color: #ff5555; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800;">Mathematical Formula</h4>
+      ${formulaRows}
+      <div style="display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800;">
+        <span style="color: #fff;">Final Weighted Sum:</span>
+        <span style="color: #fff; font-size: 16px;">${total}%</span>
+      </div>
+    </div>
+  `;
 }

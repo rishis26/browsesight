@@ -112,4 +112,74 @@ function updateSiteTrust(data) {
     siteCard.style.borderLeftColor = "#3B74DE";
     trustIndicator.style.color = "#3B74DE";
   }
+
+  // Inject Pillar Breakdown
+  const pillarContainer = document.getElementById("pillar-breakdown-container");
+  if (pillarContainer && data.overall.pillars) {
+    pillarContainer.innerHTML = getPillarBreakdownHTML(data.overall.pillars);
+  }
+}
+
+/**
+ * Helper to generate the 6-Pillar Security Breakdown HTML
+ */
+function getPillarBreakdownHTML(pillars) {
+  if (!pillars) return "";
+
+  const pillarDots = [
+    {
+      label: "Reputation",
+      val: pillars.reputation || 0,
+      color: "#3B74DE",
+      w: 0.25,
+    },
+    { label: "Brand", val: pillars.brand || 0, color: "#00FF88", w: 0.2 },
+    {
+      label: "Maturity",
+      val: pillars.maturity || 0,
+      color: "#FFD700",
+      w: 0.15,
+    },
+    {
+      label: "Stability",
+      val: pillars.destination || 0,
+      color: "#AB47BC",
+      w: 0.15,
+    },
+    { label: "Pressure", val: pillars.pressure || 0, color: "#FFA726", w: 0.1 },
+    {
+      label: "Data Risk",
+      val: pillars.dataRisk || 0,
+      color: "#FF3232",
+      w: 0.15,
+    },
+  ];
+
+  const equation = pillarDots.map((p) => (p.val * p.w).toFixed(1)).join(" + ");
+  const total = pillarDots.reduce((sum, p) => sum + p.val * p.w, 0).toFixed(0);
+
+  return `
+    <div class="bs-pillar-breakdown">
+      ${pillarDots
+        .map(
+          (p) => `
+        <div class="bs-pillar-item">
+          <span class="bs-pillar-label">${p.label} <small style="opacity:0.5; font-size:9px;">(${p.w * 100}%)</small></span>
+          <div class="bs-pillar-bar-bg">
+            <div class="bs-pillar-bar-fill" style="width: ${p.val}%; background: ${p.color}"></div>
+          </div>
+          <span class="bs-pillar-val">${p.val}%</span>
+        </div>
+      `,
+        )
+        .join("")}
+
+      <div class="bs-calculation-derive" style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05); font-family: monospace; font-size:9px; color:#888; text-align:left;">
+        <div style="margin-bottom:4px; color:#aaa; font-weight:bold;">DERIVATION:</div>
+        <div style="line-height:1.4;">
+          ${equation} = <span style="color:#00FF88; font-weight:bold;">${total}%</span>
+        </div>
+      </div>
+    </div>
+  `;
 }

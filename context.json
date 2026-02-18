@@ -1,5 +1,5 @@
 {
-  "version": "2.1.2",
+  "version": "3.1.2",
   "project": {
     "name": "BrowseSight",
     "type": "Browser Extension",
@@ -119,7 +119,8 @@
       "Export Scam Summary (FIR-Ready)",
       "Screenshot Evidence Capture",
       "Quick Evidence Bundle Generation",
-      "Incident Timeline Generation"
+      "Incident Timeline Generation",
+      "Threat Intelligence Report (PDF) — Formal multi-section report with unique Report ID and IST timestamp, suitable for submission to CERT-In, cybercrime.gov.in, VirusTotal, and PhishTank"
     ]
   },
 
@@ -149,7 +150,7 @@
   },
 
   "backend_server": {
-    "version": "2.1.2",
+    "version": "3.1.2",
     "description": "Express.js API server that aggregates threat intelligence from multiple sources and provides analysis endpoints for the browser extension. Features parallel execution of security checks for ~2s response times.",
     "architecture": "The extension communicates with the backend API server, which securely stores all API keys and handles requests to external threat intelligence services",
     "technology_stack": {

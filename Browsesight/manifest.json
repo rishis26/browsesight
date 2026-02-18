@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BrowseSight",
-  "version": "2.1.2",
+  "version": "3.1.2",
   "description": "Real-time AI-powered threat detection for links, websites, and emails.",
   "icons": {
     "16": "icons/icon16.png",

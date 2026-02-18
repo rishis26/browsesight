@@ -278,6 +278,12 @@ input:checked + .slider:before {
   background: rgba(255, 255, 255, 0.05);
 }
 
+.btn-secondary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* End of main styles */
 
 .bs-pillar-breakdown {
